@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+{{ super() }}
+<script src="/static/js/add_receipt.js"></script>
+{% endblock %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+            <div class="alert alert-warning">
+                {% for message in messages %}
+                    {{ messages }}
+                {% endfor %}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+    {% endif %}
+{% endwith %}
+{% import "bootstrap/wtf.html" as wtf %}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<div class="container">
+    <form class="form-horizontal" role="form" method="post" id="receipt_form" name="receipt_form">
+        <div class="form-group">
+            <label class="control-label  col-lg-1" for="receipt_date">日期</label>
+            <div class="col-lg-2">
+                <input class="form-control" id="receipt_date" name="receipt_date" type="date">
+            </div>
+            <label class="control-label  col-lg-1" for="customer">客户</label>
+            <div class=" col-lg-2">
+                <input class="form-control" id="customer" name="customer" required type="text">
+            </div>
+            <label class="control-label  col-lg-1" for="identifier">编号</label>
+            <div class=" col-lg-2">
+                <input class="form-control" id="identifier" name="identifier" required type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label  col-lg-1" for="maker">制单人</label>
+            <div class="col-lg-2">
+                <input class="form-control" id="maker" name="maker" required type="text">
+            </div>
+            <label class="control-label  col-lg-1" for="repository">仓库</label>
+            <div class="col-lg-2">
+                <select class="form-control" id="repository" name="repository" required>
+                    <option value="主仓库">主仓库</option>
+                    <option value="次仓库">次仓库</option>
+                </select>
+            </div>
+            <label class="control-label  col-lg-1" for="balance">结算方式</label>
+            <div class="col-lg-2">
+                <input class="form-control" id="balance" name="balance" required type="text" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="btn-toolbar" role="toolbar" id="product-toolbar" name="product-toolbar">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#product-model">增加
+                            </button>
+                            <button type="button" class="btn btn-default" name="remove-product" id="remove-product">删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table" name="product-table" id="product-table">
+                    <thead>
+                    <tr>
+                        <th>商品编号</th>
+                        <th>商品名称</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>金额</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-1" for="sender">发货人</label>
+            <div class=" col-lg-2">
+                <input class="form-control" id="sender" name="sender" type="text" value="">
+            </div>
+            <label class="control-label  col-lg-1" for="handler">经手人</label>
+            <div class=" col-lg-2">
+                <input class="form-control" id="handler" name="handler" type="text" value="">
+            </div>
+        </div>
+    </form>
+    <button class="btn btn-primary" id="submit" name="submit">添加</button>
+    <button class="btn btn-warning" id="reset" name="reset">重置</button>
+</div>
+<div class="modal fade" id="product-model" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">添加商品</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search-input" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="search-btn">搜索!</button>
+                    </span>
+                </div><!-- /input-group -->
+                <table class="table" id="result-table" name="result-table"></table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="submit-btn">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+{% endblock %}
+
+<!--<tr id="addr0">-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-product_id" name="products-0-product_id"-->
+<!--type="text" required>-->
+<!--</td>-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-product_name" name="products-0-product_name"-->
+<!--type="text" required readonly>-->
+<!--</td>-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-unit" name="products-0-unit" type="text"-->
+<!--required readonly>-->
+<!--</td>-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-amount" name="products-0-amount" type="text"-->
+<!--required>-->
+<!--</td>-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-univalent" name="products-0-univalent"-->
+<!--type="text" required readonly>-->
+<!--</td>-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-price" name="products-0-price" type="text"-->
+<!--required readonly>-->
+<!--</td>-->
+<!--<td>-->
+<!--<input class="form-control" id="products-0-comment" name="products-0-comment" type="text">-->
+<!--</td>-->
+<!--</tr>-->

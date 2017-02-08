@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/stocks.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">库存列表</div>
+        <table class="table" id="stock-table" name="stock-table"></table>
+    </div>
+</div>
+{% endblock %}

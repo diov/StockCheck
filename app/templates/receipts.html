@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/receipt.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">发票列表</div>
+        <table class="table" id="receipt-table" name="receipt-table"></table>
+    </div>
+</div>
+{% endblock %}
