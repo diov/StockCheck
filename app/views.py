@@ -44,6 +44,7 @@ def fetch_product():
 @app.route('/add_receipt', methods=['GET', 'POST'])
 def add_receipt():
     form = ReceiptForm()
+    json_response = {}
     if request.method == 'POST':
         if form.validate_on_submit():
             products = form.products.data
@@ -63,14 +64,10 @@ def add_receipt():
                     'sender': form.sender.data,
                     'handler': form.sender.data
                 }
-                message_dict = item.add_receipt(**data)
-                if message_dict.get('status'):
-                    flash(message=message_dict.get('message'), category='info')
-                else:
-                    flash(message=message_dict.get('message'), category='error')
+                json_response = item.add_receipt(**data)
         else:
-            flash(form.errors)
-        return redirect(url_for('add_receipt'))
+            json_response = {'status': 2, 'message': form.errors}
+        return jsonify(json_response)
     else:
         return render_template('add_receipt.html', title='添加发票', form=form)
 

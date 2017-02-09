@@ -144,8 +144,8 @@ def add_receipt(**kwargs):
         from datetime import datetime
         date = datetime.today()
 
-    if Receipt.query.filter(identifier == identifier):
-        return {'status': False, 'message': u'已经存在相同编号的发票！'}
+    if Receipt.query.filter(Receipt.identifier == identifier).first():
+        return {'status': 1, 'message': u'已经存在相同编号的发票！'}
     else:
         new_receipt = Receipt(identifier=identifier, date=date, customer=customer, maker=maker, repository=repository,
                               balance=balance, product_id=product_id, name=name, amount=amount, price=price,
@@ -158,8 +158,8 @@ def add_receipt(**kwargs):
             session.add(stock)
             # 提交即保存到数据库:
             session.commit()
-            return {'status': True, 'message': u'添加发票成功！'}
+            return {'status': 0, 'message': u'添加发票成功！'}
         except:
-            return {'status': False, 'message': u'添加发票失败'}
+            return {'status': 1, 'message': u'添加发票失败'}
         finally:
             session.close()

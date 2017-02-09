@@ -14,7 +14,7 @@ class ProductForm(FlaskForm):
 
 
 class ReceiptForm(FlaskForm):
-    receipt_date = DateField(u'日期')
+    receipt_date = DateField(u'日期', validators=[DataRequired(u'日期不能为空')])
     customer = StringField(u'客户', validators=[DataRequired(message=u'客户不能为空')])
     identifier = StringField(u'编号', validators=[DataRequired(message=u'编号不能为空')])
     maker = StringField(u'制单人', validators=[DataRequired(message=u'制单人不能为空')])

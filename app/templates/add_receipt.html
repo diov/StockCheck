@@ -2,42 +2,36 @@
 
 {% block scripts %}
 {{ super() }}
-<script src="/static/js/add_receipt.js"></script>
+<script src="{{ url_for('static', filename='js/validator.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_receipt.js') }}"></script>
 {% endblock %}
 
 {% block content %}
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-            <div class="alert alert-warning">
-                {% for message in messages %}
-                    {{ messages }}
-                {% endfor %}
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-    {% endif %}
-{% endwith %}
 {% import "bootstrap/wtf.html" as wtf %}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
-    <form class="form-horizontal" role="form" method="post" id="receipt_form" name="receipt_form">
+    <div class="alert alert-danger" id="warning-block">
+        <strong></strong>
+    </div>
+    <form class="form-horizontal" role="form" onsubmit="return false;" id="receipt-form" name="receipt-form">
         <div class="form-group">
             <label class="control-label  col-lg-1" for="receipt_date">日期</label>
             <div class="col-lg-2">
-                <input class="form-control" id="receipt_date" name="receipt_date" type="date">
+                <input class="form-control" id="receipt_date" name="receipt_date" type="date" required>
             </div>
             <label class="control-label  col-lg-1" for="customer">客户</label>
             <div class=" col-lg-2">
-                <input class="form-control" id="customer" name="customer" required type="text">
+                <input class="form-control" id="customer" name="customer" type="text" required>
             </div>
             <label class="control-label  col-lg-1" for="identifier">编号</label>
             <div class=" col-lg-2">
-                <input class="form-control" id="identifier" name="identifier" required type="text">
+                <input class="form-control" id="identifier" name="identifier" type="text" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label  col-lg-1" for="maker">制单人</label>
             <div class="col-lg-2">
-                <input class="form-control" id="maker" name="maker" required type="text">
+                <input class="form-control" id="maker" name="maker" type="text" required>
             </div>
             <label class="control-label  col-lg-1" for="repository">仓库</label>
             <div class="col-lg-2">
@@ -48,7 +42,7 @@
             </div>
             <label class="control-label  col-lg-1" for="balance">结算方式</label>
             <div class="col-lg-2">
-                <input class="form-control" id="balance" name="balance" required type="text" value="">
+                <input class="form-control" id="balance" name="balance" type="text" value="" required>
             </div>
         </div>
         <div class="form-group">
@@ -84,16 +78,16 @@
         <div class="form-group">
             <label class="control-label col-lg-1" for="sender">发货人</label>
             <div class=" col-lg-2">
-                <input class="form-control" id="sender" name="sender" type="text" value="">
+                <input class="form-control" id="sender" name="sender" type="text" value="" required>
             </div>
             <label class="control-label  col-lg-1" for="handler">经手人</label>
             <div class=" col-lg-2">
-                <input class="form-control" id="handler" name="handler" type="text" value="">
+                <input class="form-control" id="handler" name="handler" type="text" value="" required>
             </div>
         </div>
+        <button class="btn btn-primary" type="submit" id="submit" name="submit">添加</button>
+        <input class="btn btn-warning" type="reset" id="remove-add" name="remove-add" value="重置">
     </form>
-    <button class="btn btn-primary" id="submit" name="submit">添加</button>
-    <button class="btn btn-warning" id="reset" name="reset">重置</button>
 </div>
 <div class="modal fade" id="product-model" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
      aria-hidden="true">
@@ -114,39 +108,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="submit-btn">提交</button>
+                <input type="button" class="btn btn-primary" id="submit-btn" value="提交">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
 {% endblock %}
-
-<!--<tr id="addr0">-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-product_id" name="products-0-product_id"-->
-<!--type="text" required>-->
-<!--</td>-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-product_name" name="products-0-product_name"-->
-<!--type="text" required readonly>-->
-<!--</td>-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-unit" name="products-0-unit" type="text"-->
-<!--required readonly>-->
-<!--</td>-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-amount" name="products-0-amount" type="text"-->
-<!--required>-->
-<!--</td>-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-univalent" name="products-0-univalent"-->
-<!--type="text" required readonly>-->
-<!--</td>-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-price" name="products-0-price" type="text"-->
-<!--required readonly>-->
-<!--</td>-->
-<!--<td>-->
-<!--<input class="form-control" id="products-0-comment" name="products-0-comment" type="text">-->
-<!--</td>-->
-<!--</tr>-->
