@@ -1,7 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, IntegerField, TextAreaField, SubmitField, DecimalField, FieldList, \
-    FormField, \
-    SelectField
+from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField
 from wtforms.validators import DataRequired
 
 
@@ -19,7 +17,7 @@ class ReceiptForm(FlaskForm):
     identifier = StringField(u'编号', validators=[DataRequired(message=u'编号不能为空')])
     maker = StringField(u'制单人', validators=[DataRequired(message=u'制单人不能为空')])
     repository = SelectField(u'仓库', validators=[DataRequired()], choices=[('主仓库', '主仓库'), ('次仓库', '次仓库')])
-    balance = StringField(u'结算方式', validators=[DataRequired(u' 结算方式不能为空')])
+    balance = SelectField(u'结算方式', validators=[DataRequired()], choices=[('货到付款', '货到付款'), ('款到发货', '款到发货')])
     products = FieldList(FormField(ProductForm), min_entries=1)
     sender = StringField(u'发货人')
     handler = StringField(u'经手人')
