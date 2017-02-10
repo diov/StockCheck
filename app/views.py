@@ -1,6 +1,5 @@
-from flask import render_template, redirect, flash
+from flask import render_template
 from flask import request, jsonify
-from flask import url_for
 
 from app import app
 from app.forms import ReceiptForm
@@ -24,10 +23,11 @@ def show_detail_stocks():
     offset = request.args.get('offset', 1, type=int)
     search = request.args.get('search', '', type=str)
     if search:
-        pagination = Stock.query.filter(Stock.name.ilike("%{}%".format(search))) \
-            .paginate(offset // limit + 1, per_page=limit, error_out=False)
+        pagination = Stock.query.filter(Stock.name.ilike("%{}%".format(search))).paginate(
+            offset // limit + 1, per_page=limit, error_out=False)
     else:
-        pagination = Stock.query.paginate(offset // limit + 1, per_page=limit, error_out=False)
+        pagination = Stock.query.paginate(
+            offset // limit + 1, per_page=limit, error_out=False)
     return jsonify(rows=[product.serialize for product in pagination.items], total=pagination.total)
 
 
@@ -35,7 +35,8 @@ def show_detail_stocks():
 def fetch_product():
     search = request.args.get('search', '', type=str)
     if search:
-        result = Stock.query.filter(Stock.name.ilike("%{}%".format(search))).all()
+        result = Stock.query.filter(
+            Stock.name.ilike("%{}%".format(search))).all()
     else:
         result = ''
     return jsonify([product.serialize for product in result])
@@ -86,5 +87,6 @@ def show_receipts_details():
         pagination = Receipt.query.filter(Receipt.customer.ilike("%{}%".format(search))) \
             .paginate(offset // limit + 1, per_page=limit, error_out=False)
     else:
-        pagination = Receipt.query.paginate(offset // limit + 1, per_page=limit, error_out=False)
+        pagination = Receipt.query.paginate(
+            offset // limit + 1, per_page=limit, error_out=False)
     return jsonify(rows=[receipt.serialize for receipt in pagination.items], total=pagination.total)

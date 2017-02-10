@@ -10,5 +10,3 @@ app.config.from_pyfile('config.py')
 csrf.init_app(app)
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
-
-from app import views

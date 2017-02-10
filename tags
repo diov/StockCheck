@@ -1,0 +1,107 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BOOTSTRAP_SERVE_LOCAL	app/config.py	/^BOOTSTRAP_SERVE_LOCAL = True$/;"	kind:variable	line:3
+Bootstrap	app/__init__.py	/^from flask_bootstrap import Bootstrap$/;"	kind:namespace	line:4
+CSRFProtect	app/__init__.py	/^from flask_wtf.csrf import CSRFProtect$/;"	kind:namespace	line:3
+CSRF_ENABLED	app/config.py	/^CSRF_ENABLED = False$/;"	kind:variable	line:1
+DataRequired	app/forms.py	/^from wtforms.validators import DataRequired$/;"	kind:namespace	line:3
+DateField	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+DecimalField	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+FieldList	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+Flask	app/__init__.py	/^from flask import Flask$/;"	kind:namespace	line:1
+FlaskForm	app/forms.py	/^from flask_wtf import FlaskForm$/;"	kind:namespace	line:1
+FormField	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+IntegerField	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+ProductForm	app/forms.py	/^class ProductForm(FlaskForm):$/;"	kind:class	line:6
+Receipt	app/views.py	/^from model.item import Stock, Receipt$/;"	kind:namespace	line:7
+Receipt	model/item.py	/^class Receipt(db.Model):$/;"	kind:class	line:34
+ReceiptForm	app/forms.py	/^class ReceiptForm(FlaskForm):$/;"	kind:class	line:14
+ReceiptForm	app/views.py	/^from app.forms import ReceiptForm$/;"	kind:namespace	line:5
+SECRET_KEY	app/config.py	/^SECRET_KEY = 'you-will-never-guess'$/;"	kind:variable	line:2
+SQLALCHEMY_COMMIT_ON_TEARDOWN	app/config.py	/^SQLALCHEMY_COMMIT_ON_TEARDOWN = True$/;"	kind:variable	line:7
+SQLALCHEMY_DATABASE_URI	app/config.py	/^SQLALCHEMY_DATABASE_URI = 'sqlite:\/\/\/..\/database\/wanglu.db'$/;"	kind:variable	line:4
+SQLALCHEMY_ECHO	app/config.py	/^SQLALCHEMY_ECHO = True$/;"	kind:variable	line:5
+SQLALCHEMY_TRACK_MODIFICATIONS	app/config.py	/^SQLALCHEMY_TRACK_MODIFICATIONS = True$/;"	kind:variable	line:6
+SQLAlchemy	app/__init__.py	/^from flask_sqlalchemy import SQLAlchemy$/;"	kind:namespace	line:2
+SelectField	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+Stock	app/views.py	/^from model.item import Stock, Receipt$/;"	kind:namespace	line:7
+Stock	model/item.py	/^class Stock(db.Model):$/;"	kind:class	line:4
+StringField	app/forms.py	/^from wtforms import StringField, DateField, IntegerField, DecimalField, FieldList, FormField, SelectField$/;"	kind:namespace	line:2
+__init__.py	__init__.py	1;"	kind:file	line:1
+__init__.py	app/__init__.py	1;"	kind:file	line:1
+__init__.py	model/__init__.py	1;"	kind:file	line:1
+__repr__	model/item.py	/^    def __repr__(self):$/;"	kind:member	line:29
+__repr__	model/item.py	/^    def __repr__(self):$/;"	kind:member	line:75
+__tablename__	model/item.py	/^    __tablename__ = 'receipt'$/;"	kind:variable	line:36
+__tablename__	model/item.py	/^    __tablename__ = 'stock'$/;"	kind:variable	line:6
+add_receipt	app/views.py	/^def add_receipt():$/;"	kind:function	line:46
+add_receipt	model/item.py	/^def add_receipt(**kwargs):$/;"	kind:function	line:130
+amount	app/forms.py	/^    amount = IntegerField(u'数量', validators=[DataRequired(u'数量不能为空')])$/;"	kind:variable	line:9
+amount	model/item.py	/^    amount = db.Column(db.INTEGER)  # 数量$/;"	kind:variable	line:48
+amount	model/item.py	/^    amount = db.Column(db.INTEGER)$/;"	kind:variable	line:15
+app	app/__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:8
+app	app/views.py	/^from app import app$/;"	kind:namespace	line:4
+app	run.py	/^from app import app$/;"	kind:namespace	line:1
+balance	app/forms.py	/^    balance = SelectField(u'结算方式', validators=[DataRequired()], choices=[$/;"	kind:variable	line:22
+balance	model/item.py	/^    balance = db.Column(db.String(20))  # 结算方式$/;"	kind:variable	line:45
+bootstrap	app/__init__.py	/^bootstrap = Bootstrap(app)$/;"	kind:variable	line:11
+comment	app/forms.py	/^    comment = StringField(u'备注')$/;"	kind:variable	line:11
+comment	model/item.py	/^    comment = db.Column(db.String(30))  # 备注$/;"	kind:variable	line:50
+config.py	app/config.py	1;"	kind:file	line:1
+csrf	app/__init__.py	/^csrf = CSRFProtect()$/;"	kind:variable	line:6
+customer	app/forms.py	/^    customer = StringField(u'客户', validators=[DataRequired(message=u'客户不能为空')])$/;"	kind:variable	line:16
+customer	model/item.py	/^    customer = db.Column(db.String(20))  # 客户$/;"	kind:variable	line:42
+date	model/item.py	/^    date = db.Column(db.DateTime)  # 日期$/;"	kind:variable	line:41
+datetime	model/item.py	/^        from datetime import datetime$/;"	kind:namespace	line:146
+db	app/__init__.py	/^db = SQLAlchemy(app)$/;"	kind:variable	line:12
+db	model/item.py	/^from app import db$/;"	kind:namespace	line:1
+factory_name	model/item.py	/^    factory_name = db.Column(db.String(20))$/;"	kind:variable	line:12
+fetch_product	app/views.py	/^def fetch_product():$/;"	kind:function	line:35
+forms.py	app/forms.py	1;"	kind:file	line:1
+get_all_receipts	model/item.py	/^def get_all_receipts():$/;"	kind:function	line:124
+get_all_stock	model/item.py	/^def get_all_stock():$/;"	kind:function	line:118
+handler	app/forms.py	/^    handler = StringField(u'经手人')$/;"	kind:variable	line:26
+handler	model/item.py	/^    handler = db.Column(db.String(20))  # 经手人$/;"	kind:variable	line:52
+home	app/views.py	/^def home():$/;"	kind:function	line:11
+id	model/item.py	/^    id = db.Column(db.INTEGER, primary_key=True)$/;"	kind:variable	line:39
+id	model/item.py	/^    id = db.Column(db.INTEGER, primary_key=True)$/;"	kind:variable	line:9
+identifier	app/forms.py	/^    identifier = StringField($/;"	kind:variable	line:17
+identifier	model/item.py	/^    identifier = db.Column(db.String(20))  # 编号$/;"	kind:variable	line:40
+import_stock	model/item.py	/^def import_stock():$/;"	kind:function	line:89
+item	app/views.py	/^from model import item$/;"	kind:namespace	line:6
+item.py	model/item.py	1;"	kind:file	line:1
+jsonify	app/views.py	/^from flask import request, jsonify$/;"	kind:namespace	line:2
+maker	app/forms.py	/^    maker = StringField(u'制单人', validators=[DataRequired(message=u'制单人不能为空')])$/;"	kind:variable	line:19
+maker	model/item.py	/^    maker = db.Column(db.String(20))  # 制单人$/;"	kind:variable	line:43
+name	model/item.py	/^    name = db.Column(db.String(20))  # 商品名称$/;"	kind:variable	line:47
+name	model/item.py	/^    name = db.Column(db.String(20))$/;"	kind:variable	line:10
+price	app/forms.py	/^    price = DecimalField(u'金额', validators=[DataRequired(u'金额不能为空')])$/;"	kind:variable	line:10
+price	model/item.py	/^    price = db.Column(db.FLOAT)  # 金额$/;"	kind:variable	line:49
+product_id	app/forms.py	/^    product_id = StringField(u'商品编号', validators=[DataRequired(u'编号不能为空')])$/;"	kind:variable	line:7
+product_id	model/item.py	/^    product_id = db.Column(db.String(20))  # 商品编号$/;"	kind:variable	line:46
+product_name	app/forms.py	/^    product_name = StringField(u'商品名称', validators=[DataRequired(u'名称不能为空')])$/;"	kind:variable	line:8
+products	app/forms.py	/^    products = FieldList(FormField(ProductForm), min_entries=1)$/;"	kind:variable	line:24
+purchase_price	model/item.py	/^    purchase_price = db.Column(db.FLOAT)$/;"	kind:variable	line:13
+receipt_date	app/forms.py	/^    receipt_date = DateField(u'日期', validators=[DataRequired(u'日期不能为空')])$/;"	kind:variable	line:15
+render_template	app/views.py	/^from flask import render_template$/;"	kind:namespace	line:1
+repository	app/forms.py	/^    repository = SelectField(u'仓库', validators=[DataRequired()], choices=[$/;"	kind:variable	line:20
+repository	model/item.py	/^    repository = db.Column(db.String(20))  # 发货仓库$/;"	kind:variable	line:44
+request	app/views.py	/^from flask import request, jsonify$/;"	kind:namespace	line:2
+run.py	run.py	1;"	kind:file	line:1
+sale_price	model/item.py	/^    sale_price = db.Column(db.FLOAT)$/;"	kind:variable	line:14
+sender	app/forms.py	/^    sender = StringField(u'发货人')$/;"	kind:variable	line:25
+sender	model/item.py	/^    sender = db.Column(db.String(20))  # 发货人$/;"	kind:variable	line:51
+serialize	model/item.py	/^    def serialize(self):$/;"	kind:member	line:18
+serialize	model/item.py	/^    def serialize(self):$/;"	kind:member	line:55
+session	model/item.py	/^session = db.session$/;"	kind:variable	line:86
+show_detail_stocks	app/views.py	/^def show_detail_stocks():$/;"	kind:function	line:21
+show_receipts	app/views.py	/^def show_receipts():$/;"	kind:function	line:77
+show_receipts_details	app/views.py	/^def show_receipts_details():$/;"	kind:function	line:82
+show_stocks	app/views.py	/^def show_stocks():$/;"	kind:function	line:16
+unit	model/item.py	/^    unit = db.Column(db.String(10))$/;"	kind:variable	line:11
+views.py	app/views.py	1;"	kind:file	line:1
+xlrd	model/item.py	/^    import xlrd$/;"	kind:namespace	line:90

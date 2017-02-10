@@ -53,7 +53,8 @@ class Receipt(db.Model):
 
     @property
     def serialize(self):
-        product = session.query(Stock).filter(Stock.id == self.product_id).first()
+        product = session.query(Stock).filter(
+            Stock.id == self.product_id).first()
         return {
             'date': self.date.strftime('%Y-%m-%d'),
             'customer': self.customer,
@@ -95,7 +96,8 @@ def import_stock():
             item = product_sheet.row(rx)
             # 创建新Stock对象:
             new_stock = Stock(name=item[0].value, factory_name=item[4].value, unit=item[1].value,
-                              purchase_price=item[2].value if 0 != item[2].ctype else 0.0,
+                              purchase_price=item[2].value if 0 != item[
+                                  2].ctype else 0.0,
                               sale_price=item[3].value if 0 != item[3].ctype else 0.0)
             # 添加到session:
             session.add(new_stock)
