@@ -31,7 +31,7 @@
         <div class="form-group">
             <label class="control-label  col-lg-1" for="maker">制单人</label>
             <div class="col-lg-2">
-                <input class="form-control" id="maker" name="maker" type="text" required>
+                <input class="form-control" id="maker" name="maker" type="text" value="张林" required>
             </div>
             <label class="control-label  col-lg-1" for="repository">仓库</label>
             <div class="col-lg-2">
@@ -42,7 +42,10 @@
             </div>
             <label class="control-label  col-lg-1" for="balance">结算方式</label>
             <div class="col-lg-2">
-                <input class="form-control" id="balance" name="balance" type="text" value="" required>
+                <select class="form-control" id="balance" name="balance" required>
+                    <option value="货到付款">货到付款</option>
+                    <option value="款到发货">款到发货</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
@@ -78,11 +81,11 @@
         <div class="form-group">
             <label class="control-label col-lg-1" for="sender">发货人</label>
             <div class=" col-lg-2">
-                <input class="form-control" id="sender" name="sender" type="text" value="" required>
+                <input class="form-control" id="sender" name="sender" type="text" value="王" required>
             </div>
             <label class="control-label  col-lg-1" for="handler">经手人</label>
             <div class=" col-lg-2">
-                <input class="form-control" id="handler" name="handler" type="text" value="" required>
+                <input class="form-control" id="handler" name="handler" type="text" value="叶灵德" required>
             </div>
         </div>
         <button class="btn btn-primary" type="submit" id="submit" name="submit">添加</button>
